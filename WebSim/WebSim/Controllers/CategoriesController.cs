@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebSim.Data;
+using WebSim.Data.Entities;
+using WebSim.Helpers;
 using WebSim.Models;
 
 namespace WebSim.Controllers
@@ -29,6 +31,24 @@ namespace WebSim.Controllers
                 .Select(x => _mapper.Map<CategoryItemViewModel>(x))
                 .ToListAsync();
             return Ok(model);
+        }
+
+        [HttpPost("create")]
+        public async Task<IActionResult> Create([FromBody] CategoryCreateItemVM model)
+        {
+            try
+            {
+                var category = _mapper.Map<CategoryEntity>(model);
+                category.Image = ImageWorker.SaveImage(model.ImageBase64);
+                await _appEFContext.Categories.AddAsync(category);
+                await _appEFContext.SaveChangesAsync();
+                return Ok(_mapper.Map<CategoryItemViewModel>(category));
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new {error= ex.Message});
+            }
         }
     }
 }
