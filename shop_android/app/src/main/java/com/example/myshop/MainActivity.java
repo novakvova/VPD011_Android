@@ -2,6 +2,7 @@ package com.example.myshop;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,6 +12,13 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.myshop.application.HomeApplication;
 import com.example.myshop.contants.Urls;
+import com.example.myshop.catalog.CatalogActivity;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,10 +33,17 @@ public class MainActivity extends AppCompatActivity {
                 .load(url)
                 .apply(new RequestOptions().override(600))
                 .into(imgLogo);
+
     }
 
     public void onClickBtn(View view) {
-        Toast.makeText(this, "Мене нажали",
-                Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "Мене нажали",
+//                Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(MainActivity.this, CatalogActivity.class);
+        startActivity(intent);
+        //finish();
+
     }
+
+
 }
