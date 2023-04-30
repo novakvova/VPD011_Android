@@ -6,12 +6,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 
 import com.example.myshop.BaseActivity;
 import com.example.myshop.R;
 import com.example.myshop.catalog.categorycard.CategoriesAdapter;
 import com.example.myshop.dto.category.CategoryItemDTO;
 import com.example.myshop.service.CategoryNetwork;
+import com.example.myshop.utils.CommonUtils;
 
 import java.util.List;
 
@@ -34,6 +36,8 @@ public class CatalogActivity extends BaseActivity {
     }
 
     private void requestServer() {
+        CommonUtils.showLoading();
+
         CategoryNetwork
                 .getInstance()
                 .getJsonApi()
@@ -41,6 +45,7 @@ public class CatalogActivity extends BaseActivity {
                 .enqueue(new Callback<List<CategoryItemDTO>>() {
                     @Override
                     public void onResponse(Call<List<CategoryItemDTO>> call, Response<List<CategoryItemDTO>> response) {
+                        CommonUtils.hideLoading();
                         List<CategoryItemDTO> data = response.body();
                         //CategoryItemDTO item = data.get(0);
                         categoriesAdapter = new CategoriesAdapter(data);
@@ -49,6 +54,7 @@ public class CatalogActivity extends BaseActivity {
 
                     @Override
                     public void onFailure(Call<List<CategoryItemDTO>> call, Throwable t) {
+                        CommonUtils.hideLoading();
 
                     }
                 });

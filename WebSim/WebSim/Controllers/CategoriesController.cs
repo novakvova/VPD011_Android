@@ -25,6 +25,7 @@ namespace WebSim.Controllers
         [HttpGet("list")]
         public async Task<IActionResult> Get()
         {
+            Thread.Sleep(1000);
             var model = await _appEFContext.Categories
                 .Where(x => x.IsDeleted == false)
                 .OrderBy(x => x.Priority)
