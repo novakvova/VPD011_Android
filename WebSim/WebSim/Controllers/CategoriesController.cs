@@ -34,6 +34,15 @@ namespace WebSim.Controllers
             return Ok(model);
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var cat = await _appEFContext.Categories.FindAsync(id);
+            if (cat == null)
+                return NotFound();
+            return Ok(_mapper.Map<CategoryItemViewModel>(cat));
+        }
+
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromBody] CategoryCreateItemVM model)
         {
