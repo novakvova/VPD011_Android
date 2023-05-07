@@ -20,6 +20,8 @@
         android:layout_margin="10dp"
         android:orientation="vertical">
 
+
+
         <ImageView
             android:id="@+id/categoryImage"
             android:layout_width="match_parent"
@@ -33,6 +35,7 @@
             app:layout_scrollFlags="scroll|enterAlways" />
 
         <LinearLayout
+            android:id="@+id/llText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -48,6 +51,30 @@
                 android:textSize="18dp"
                 />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnCategoryDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Видалить"
+            android:textSize="12dp"
+            android:textColor="@color/red"
+            app:iconTint="@color/red"
+            app:icon="@drawable/baseline_close_24"
+            style="?attr/materialButtonOutlinedStyle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llText" />
+
+        <Button
+            android:id="@+id/btnCategoryUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Змінить"
+            android:textSize="12dp"
+            app:icon="@drawable/baseline_edit_24"
+            style="?attr/materialButtonOutlinedStyle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCategoryDelete" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

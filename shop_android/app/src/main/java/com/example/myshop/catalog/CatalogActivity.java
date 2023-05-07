@@ -1,12 +1,12 @@
 package com.example.myshop.catalog;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
+import android.widget.Toast;
 
 import com.example.myshop.BaseActivity;
 import com.example.myshop.R;
@@ -48,7 +48,7 @@ public class CatalogActivity extends BaseActivity {
                         CommonUtils.hideLoading();
                         List<CategoryItemDTO> data = response.body();
                         //CategoryItemDTO item = data.get(0);
-                        categoriesAdapter = new CategoriesAdapter(data);
+                        categoriesAdapter = new CategoriesAdapter(data, CatalogActivity.this::onClickDelete);
                         rcvCategories.setAdapter(categoriesAdapter);
                     }
 
@@ -59,5 +59,27 @@ public class CatalogActivity extends BaseActivity {
                     }
                 });
 
+    }
+
+    void onClickDelete(CategoryItemDTO category) {
+        //Toast.makeText(this, "Видаляємо "+ category.getId(), Toast.LENGTH_SHORT).show();
+        CommonUtils.showLoading();
+        CategoryNetwork.getInstance()
+                .getJsonApi()
+                .delete(category.getId())
+                .enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        CommonUtils.hideLoading();
+                        Intent intent = new Intent(CatalogActivity.this, CatalogActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        CommonUtils.hideLoading();
+                    }
+                });
     }
 }
