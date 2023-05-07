@@ -48,7 +48,9 @@ public class CatalogActivity extends BaseActivity {
                         CommonUtils.hideLoading();
                         List<CategoryItemDTO> data = response.body();
                         //CategoryItemDTO item = data.get(0);
-                        categoriesAdapter = new CategoriesAdapter(data, CatalogActivity.this::onClickDelete);
+                        categoriesAdapter = new CategoriesAdapter(data,
+                                CatalogActivity.this::onClickDelete,
+                                CatalogActivity.this::onClickUpdate);
                         rcvCategories.setAdapter(categoriesAdapter);
                     }
 
@@ -81,5 +83,15 @@ public class CatalogActivity extends BaseActivity {
                         CommonUtils.hideLoading();
                     }
                 });
+    }
+
+    void onClickUpdate(CategoryItemDTO category) {
+        Intent intent = new Intent(CatalogActivity.this, CategoryUpdateActivity.class);
+        Bundle b = new Bundle();
+        b.putInt("id", category.getId());
+        intent.putExtras(b);
+        startActivity(intent);
+        finish();
+
     }
 }

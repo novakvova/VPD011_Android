@@ -15,12 +15,14 @@ public class CategoryCardViewHolder extends RecyclerView.ViewHolder {
     public ImageView categoryImage;
     public TextView categoryName;
     public Button btnCategoryDelete;
+    public Button btnCategoryUpdate;
     public CategoryCardViewHolder(@NonNull View itemView) {
         super(itemView);
         view=itemView;
         categoryName=itemView.findViewById(R.id.categoryName);
         categoryImage=itemView.findViewById(R.id.categoryImage);
         btnCategoryDelete=itemView.findViewById(R.id.btnCategoryDelete);
+        btnCategoryUpdate=itemView.findViewById(R.id.btnCategoryUpdate);
     }
     public View getView() {
         return view;
