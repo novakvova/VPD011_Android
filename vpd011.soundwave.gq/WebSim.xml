@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebSim</name>
+    </assembly>
+    <members>
+        <member name="T:WebSim.Migrations.AddtblCategories">
+            <inheritdoc />
+        </member>
+        <member name="M:WebSim.Migrations.AddtblCategories.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:WebSim.Migrations.AddtblCategories.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:WebSim.Migrations.AddtblCategories.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:WebSim.Migrations.AddtabelsIdentity">
+            <inheritdoc />
+        </member>
+        <member name="M:WebSim.Migrations.AddtabelsIdentity.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:WebSim.Migrations.AddtabelsIdentity.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:WebSim.Migrations.AddtabelsIdentity.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:WebSim.Migrations.AddcolUserIdtblCategories">
+            <inheritdoc />
+        </member>
+        <member name="M:WebSim.Migrations.AddcolUserIdtblCategories.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:WebSim.Migrations.AddcolUserIdtblCategories.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:WebSim.Migrations.AddcolUserIdtblCategories.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="P:WebSim.Models.LoginViewModel.Email">
+            <summary>
+            Пошта користувача
+            </summary>
+            <example>marko@gmail.com</example>
+        </member>
+        <member name="P:WebSim.Models.LoginViewModel.Password">
+            <summary>
+            Пароль користувача
+            </summary>
+            <example>123456</example>
+        </member>
+    </members>
+</doc>

@@ -6,13 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.example.myshop.BaseActivity;
 import com.example.myshop.R;
 import com.example.myshop.catalog.categorycard.CategoriesAdapter;
 import com.example.myshop.dto.category.CategoryItemDTO;
-import com.example.myshop.service.CategoryNetwork;
+import com.example.myshop.service.ApplicationNetwork;
 import com.example.myshop.utils.CommonUtils;
 
 import java.util.List;
@@ -38,9 +37,9 @@ public class CatalogActivity extends BaseActivity {
     private void requestServer() {
         CommonUtils.showLoading();
 
-        CategoryNetwork
+        ApplicationNetwork
                 .getInstance()
-                .getJsonApi()
+                .getCategoryApi()
                 .list()
                 .enqueue(new Callback<List<CategoryItemDTO>>() {
                     @Override
@@ -66,8 +65,8 @@ public class CatalogActivity extends BaseActivity {
     void onClickDelete(CategoryItemDTO category) {
         //Toast.makeText(this, "Видаляємо "+ category.getId(), Toast.LENGTH_SHORT).show();
         CommonUtils.showLoading();
-        CategoryNetwork.getInstance()
-                .getJsonApi()
+        ApplicationNetwork.getInstance()
+                .getCategoryApi()
                 .delete(category.getId())
                 .enqueue(new Callback<Void>() {
                     @Override

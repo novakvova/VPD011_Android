@@ -20,10 +20,9 @@ import com.example.myshop.ChangeImageActivity;
 import com.example.myshop.R;
 import com.example.myshop.application.HomeApplication;
 import com.example.myshop.contants.Urls;
-import com.example.myshop.dto.category.CategoryCreateDTO;
 import com.example.myshop.dto.category.CategoryItemDTO;
 import com.example.myshop.dto.category.CategoryUpdateDTO;
-import com.example.myshop.service.CategoryNetwork;
+import com.example.myshop.service.ApplicationNetwork;
 import com.example.myshop.utils.CommonUtils;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -77,9 +76,9 @@ public class CategoryUpdateActivity extends BaseActivity {
 
     private void initInput() {
         CommonUtils.showLoading();
-        CategoryNetwork
+        ApplicationNetwork
                 .getInstance()
-                .getJsonApi()
+                .getCategoryApi()
                 .getById(id)
                 .enqueue(new Callback<CategoryItemDTO>() {
                     @Override
@@ -116,9 +115,9 @@ public class CategoryUpdateActivity extends BaseActivity {
         if(uri!=null)
             model.setImageBase64(uriGetBase64(uri));
 
-        CategoryNetwork
+        ApplicationNetwork
                 .getInstance()
-                .getJsonApi()
+                .getCategoryApi()
                 .update(model)
                 .enqueue(new Callback<Void>() {
                     @Override

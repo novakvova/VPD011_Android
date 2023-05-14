@@ -25,15 +25,6 @@ public class BaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
         switch(item.getItemId()) {
-            case R.id.m_home:
-                try {
-                    intent = new Intent(BaseActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    //finish();
-                } catch(Exception ex) {
-                    System.out.println("---Problem "+ ex.getMessage());
-                }
-                return true;
             case R.id.m_catalog:
                 try {
                     intent = new Intent(BaseActivity.this, CatalogActivity.class);

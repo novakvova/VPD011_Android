@@ -17,7 +17,7 @@ import com.example.myshop.BaseActivity;
 import com.example.myshop.ChangeImageActivity;
 import com.example.myshop.R;
 import com.example.myshop.dto.category.CategoryCreateDTO;
-import com.example.myshop.service.CategoryNetwork;
+import com.example.myshop.service.ApplicationNetwork;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -72,9 +72,9 @@ public class CategoryCreateActivity extends BaseActivity {
         model.setDescription(txtCategoryDescription.getText().toString());
         model.setImageBase64(uriGetBase64(uri));
 
-        CategoryNetwork
+        ApplicationNetwork
                 .getInstance()
-                .getJsonApi()
+                .getCategoryApi()
                 .create(model)
                 .enqueue(new Callback<Void>() {
                     @Override
